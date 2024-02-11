@@ -4,6 +4,12 @@ import cookieParser from 'cookie-parser';
 import multer from 'multer';
 
 import {
+    getUser,
+    logout,
+    googleLogin,
+    googleUploadDatabase,
+    googleUploadFile,
+    checkoutSessions,
 } from './handlers';
 
 
@@ -28,11 +34,12 @@ app.all('*', function (req, res, next) {
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
-// app.post('/get-user', getUser);
-// app.post('/logout', logout);
-// app.post('/google-login', gogoleLogin);
-// app.post('/google-upload-database', upload.single('file'), googleUploadDatabase);
-// app.post('/stripe-checkout-sessions', checkoutSessions);
+app.post('/get-user', getUser);
+app.post('/logout', logout);
+app.post('/google-login', googleLogin);
+app.post('/google-upload-database', upload.single('file'), googleUploadDatabase);
+app.post('/google-upload-file', upload.single('file'), googleUploadFile);
+app.post('/stripe-checkout-sessions', checkoutSessions);
 
 app.listen(port, () => {
     console.log(`Server started on ${port}`);
