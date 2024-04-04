@@ -10,6 +10,8 @@ import {
     googleUploadDatabase,
     googleUploadFile,
     checkoutSessions,
+    orders,
+    shops,
 } from './handlers';
 
 
@@ -40,6 +42,18 @@ app.post('/google-login', googleLogin);
 app.post('/google-upload-database', upload.single('file'), googleUploadDatabase);
 app.post('/google-upload-file', upload.single('file'), googleUploadFile);
 app.post('/stripe-checkout-sessions', checkoutSessions);
+
+app.post('/orders/create', orders.createOrder);
+app.post('/orders/delete', orders.deleteOrder);
+app.post('/orders/get', orders.getOrder);
+app.post('/orders/get-all', orders.getOrders);
+app.post('/orders/update', orders.updateOrder);
+
+app.post('/shops/create', shops.createShop);
+app.post('/shops/delete', shops.deleteShop);
+app.post('/shops/get', shops.getShop);
+app.post('/shops/get-all', shops.getShops);
+app.post('/shops/update', shops.updateShop);
 
 app.listen(port, () => {
     console.log(`Server started on ${port}`);
