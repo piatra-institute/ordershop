@@ -13,20 +13,20 @@ import {
 
 import { v4 as uuid } from 'uuid';
 
-import database from '../../database';
+import database from '@/source/database';
 import {
     users,
-} from '../../database/schema/users';
+} from '@/source/database/schema/users';
 
-import newGoogleClient from '../../services/google';
+import newGoogleClient from '@/source/services/google';
 
 import {
     logger,
-} from '../../utilities';
+} from '@/source/utilities';
 
 import {
     setAuthCookies,
-} from '../../utilities/cookies';
+} from '@/source/utilities/cookies';
 
 
 

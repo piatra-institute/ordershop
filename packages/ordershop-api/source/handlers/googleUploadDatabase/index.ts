@@ -11,15 +11,15 @@ import {
     google,
 } from 'googleapis';
 
-import {
-    searchFile,
-} from '../../utilities/google';
-
-import newGoogleClient from '../../services/google';
+import newGoogleClient from '@/source/services/google';
 
 import {
     logger,
-} from '../../utilities';
+} from '@/source/utilities';
+
+import {
+    searchFile,
+} from '@/source/utilities/google';
 
 
 
