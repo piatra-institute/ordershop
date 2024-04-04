@@ -5,16 +5,16 @@ import type {
 
 import {
     logger,
-} from '../../utilities';
+} from '@/source/utilities';
 
 import {
     clearAuthCookies,
-} from '../../utilities/cookies';
+} from '@/source/utilities/cookies';
 
 
 
 export default async function handler(
-    request: Request,
+    _request: Request,
     response: Response,
 ) {
     try {

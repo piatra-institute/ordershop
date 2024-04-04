@@ -7,6 +7,10 @@ import {
     eq,
 } from 'drizzle-orm';
 
+import {
+    TokensUser,
+} from '../data';
+
 import database from '../database';
 import {
     users,
@@ -34,7 +38,7 @@ export const getGoogleUser = async (
         refresh_token: tokens.refreshToken,
     });
 
-    let result: any = null;
+    let result: TokensUser | null = null;
 
     try {
         result = await googleClient.getTokenInfo(tokens.accessToken);
@@ -73,7 +77,7 @@ export const getTokensUser = async (
 ) => {
     const tokens = getAuthCookies(request);
     if (!tokens.accessToken || !tokens.refreshToken) {
-        return;
+        return null;
     }
 
     const user = await getGoogleUser(tokens, response);
@@ -83,8 +87,12 @@ export const getTokensUser = async (
 
 
 export const getDatabaseUser = async (
-    user: any,
+    user: TokensUser,
 ) => {
+    if (!user.email) {
+        return;
+    }
+
     return await database.query.users.findFirst({
         where: eq(users.email, user.email),
     });

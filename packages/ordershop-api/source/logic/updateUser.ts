@@ -2,6 +2,10 @@ import {
     eq,
 } from 'drizzle-orm';
 
+import {
+    DatabaseUser,
+} from '@/source/data';
+
 import database from '../database';
 import {
     users,
@@ -10,7 +14,7 @@ import {
 
 
 export const updateUserPayments = async (
-    databaseUser: any,
+    databaseUser: DatabaseUser,
     productType: string,
     sessionID: string,
 ) => {
