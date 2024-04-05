@@ -9,6 +9,11 @@ import Image from 'next/image';
 import LinkButton from '@/components/LinkButton';
 import MenuIcon from '@/components/MenuIcon';
 
+import Orders from '@/containers/Orders';
+import Shops from '@/containers/Shops';
+import About from '@/containers/About';
+import Settings from '@/containers/Settings';
+
 import {
     useLogout,
 } from '@/logic/user';
@@ -139,6 +144,34 @@ export default function Menu() {
     // #region render
     let viewElement: JSX.Element | undefined;
     switch (menuView) {
+        case 'orders':
+            viewElement = (
+                <Orders
+                    back={() => setMenuView('general')}
+                />
+            );
+            break;
+        case 'shops':
+            viewElement = (
+                <Shops
+                    back={() => setMenuView('general')}
+                />
+            );
+            break;
+        case 'settings':
+            viewElement = (
+                <Settings
+                    back={() => setMenuView('general')}
+                />
+            );
+            break;
+        case 'about':
+            viewElement = (
+                <About
+                    back={() => setMenuView('general')}
+                />
+            );
+            break;
         case 'general':
             viewElement = (
                 <div
