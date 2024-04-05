@@ -176,7 +176,9 @@ export default function Menu() {
         case 'login':
             viewElement = (
                 <LoginScreen
-                    atLoginSuccess={() => {}}
+                    atLoginSuccess={() => {
+                        setMenuView('general');
+                    }}
                     back={() => setMenuView('general')}
                 />
             );
