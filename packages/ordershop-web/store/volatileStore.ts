@@ -8,9 +8,10 @@ import type { } from '@redux-devtools/extension';
 
 
 export type MenuView =
-    | 'general' | 'about'
+    | 'general'
     | 'orders' | 'shops'
-    | 'settings';
+    | 'about' | 'settings'
+    | 'login';
 
 
 export interface VolatileState {

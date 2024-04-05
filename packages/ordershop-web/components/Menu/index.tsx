@@ -13,6 +13,7 @@ import Orders from '@/containers/Orders';
 import Shops from '@/containers/Shops';
 import About from '@/containers/About';
 import Settings from '@/containers/Settings';
+import LoginScreen from '@/components/LoginScreen';
 
 import {
     useLogout,
@@ -172,24 +173,36 @@ export default function Menu() {
                 />
             );
             break;
+        case 'login':
+            viewElement = (
+                <LoginScreen
+                    atLoginSuccess={() => {}}
+                    back={() => setMenuView('general')}
+                />
+            );
+            break;
         case 'general':
             viewElement = (
                 <div
                     className="max-w-xl m-auto p-4 grid place-items-center"
                 >
                 <ul>
-                    <li className="m-4">
-                        <LinkButton
-                            text="orders"
-                            onClick={() => setMenuView('orders')}
-                        />
-                    </li>
-                    <li className="m-4">
-                        <LinkButton
-                            text="shops"
-                            onClick={() => setMenuView('shops')}
-                        />
-                    </li>
+                    {user && (
+                        <>
+                            <li className="m-4">
+                                <LinkButton
+                                    text="orders"
+                                    onClick={() => setMenuView('orders')}
+                                />
+                            </li>
+                            <li className="m-4">
+                                <LinkButton
+                                    text="shops"
+                                    onClick={() => setMenuView('shops')}
+                                />
+                            </li>
+                        </>
+                    )}
 
                     <li className="m-4 mt-8">
                         <LinkButton
@@ -197,12 +210,23 @@ export default function Menu() {
                             onClick={() => setMenuView('about')}
                         />
                     </li>
-                    <li className="m-4">
-                        <LinkButton
-                            text="settings"
-                            onClick={() => setMenuView('settings')}
-                        />
-                    </li>
+                    {user && (
+                        <li className="m-4">
+                            <LinkButton
+                                text="settings"
+                                onClick={() => setMenuView('settings')}
+                            />
+                        </li>
+                    )}
+
+                    {!user && (
+                        <li className="m-4 mt-8">
+                            <LinkButton
+                                text="login"
+                                onClick={() => setMenuView('login')}
+                            />
+                        </li>
+                    )}
 
                     {user && (
                         <li
